@@ -1,172 +1,148 @@
-# 🛠️ pyfu — Python Fixer Upper
+# 🛠️ PyFU Ultimate: God-Tier Python Code Agent
 
-**pyfu** turns messy, inconsistent, and slightly cursed Python projects into clean, production-ready codebases.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Linter: Ruff](https://img.shields.io/badge/linter-ruff-red.svg)](https://github.com/astral-sh/ruff)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-If your code *works* but makes you uncomfortable, pyfu is for you.
+> **The all-knowing, auto-fixing, self-healing code optimization system.**
 
----
-
-## ✨ What pyfu does
-
-* 🧹 Fixes bad imports, unsafe patterns, and common mistakes using Ruff
-* 🎨 Formats code consistently using Black
-* 🧠 Catches type and logic bugs early using Mypy
-* ⚡ Improves maintainability with minimal setup
-* 🧪 Runs a full fix pipeline without quitting early
-* 🗂️ Supports safe, suffixed output files by default
-
-Opinionated by design. Fast by default. Zero patience for bad code.
+PyFU Ultimate is not just a linter; it is an intelligent agent that orchestrates the best tools in the Python ecosystem (`Ruff`, `Black`, `Mypy`, `Bandit`) combined with a custom **AST Intelligence Engine**. It analyzes, refactors, secures, and generates tests for your codebase in seconds.
 
 ---
 
-## 🤔 Why pyfu exists
+## ⚡ Key Capabilities
 
-Most Python projects are fixer-uppers:
+### 1. 🧬 **The AST Intelligence Brain**
+Unlike standard linters, PyFU parses your code's Abstract Syntax Tree (AST) to perform deep analysis:
+- **Complexity Analysis:** Calculates Cyclomatic Complexity per function to identify maintenance nightmares.
+- **Bug Detection:** Identifies dangerous patterns like **Mutable Default Arguments** (`def foo(x=[]):`).
+- **Test Generation:** Automatically writes `pytest` scaffolds based on your function signatures and complexity scores.
 
-* scripts that became libraries
-* libraries that became monsters
-* code that survived purely on hope
+### 2. 🛡️ **Advanced Security & Linting**
+- **Security Audits:** Integrates `Bandit` to detect SQL injections, hardcoded secrets, and weak cryptography.
+- **Aggressive Refactoring:** Uses `Ruff` to auto-fix imports, simplify logic, remove unused variables, and modernize legacy syntax.
 
-pyfu cleans, fixes, and upgrades these projects without forcing you to rewrite everything or risk breaking originals.
+### 3. 💎 **Pristine Formatting & Typing**
+- **Zero-Config Formatting:** Enforces `Black` standards strictly.
+- **Type Enforcement:** Runs `Mypy` to ensure type safety without the visual clutter of standard error logs.
+
+### 4. 📺 **God-Tier Developer Experience**
+- **Rich UI:** Beautiful, real-time dashboard with progress bars, live logs, and summary tables.
+- **Watchdog Mode:** Monitors files for changes and auto-heals code instantly on save.
 
 ---
 
-## 🚀 Installation
+## 📦 Installation
 
+PyFU Ultimate is a self-contained agent, but it relies on industry-standard power tools.
+
+### 1. Install Dependencies
 ```bash
-pip install pyfu
+pip install rich ruff black mypy bandit pytest
 ```
 
-or use the binary in the bin/ folder.
-
----
-
-## 🧪 Basic usage
-
-Fix a single file
-
+### 2. Install PyFU
+Download the `pyfu.py` script to your project root or add it to your PATH.
 ```bash
-pyfu path/to/file.py
-```
-
-Fix the current directory
-
-```bash
-pyfu .
-```
-
-Fix a specific project
-
-```bash
-pyfu path/to/project
+# Option B: Clone repository
+git clone https://github.com/pro-grammer-SD/pyfu.git
 ```
 
 ---
 
-## 🧰 Output behavior
+## 🚀 Usage
 
-By default, pyfu **does not modify your original files**.
+### Standard Refactor
+The default mode runs the full pipeline: Linting, Fixing, Formatting, Typing, and AST Analysis.
+```bash
+python pyfu.py .
+```
 
-Instead, it creates sanitized copies with a suffix:
+### 🧪 Auto-Generate Unit Tests
+PyFU will scan your code, determine which functions need testing, and generate a `test_*.py` file with placeholders.
+```bash
+python pyfu.py src/ --generate-tests
+```
+
+### 🔒 Deep Security Audit
+Run standard checks plus deep vulnerability scanning (Bandit).
+```bash
+python pyfu.py . --security-audit
+```
+
+### 👀 Watchdog Mode (Dev Loop)
+Keep PyFU running in the background. It will detect file saves and instantly re-process the changed files.
+```bash
+python pyfu.py . --watch
+```
+
+---
+
+## 📊 The "God-Tier" Dashboard
+
+PyFU replaces the messy output of standard tools with a unified, structured dashboard.
 
 ```text
-example.py  →  example_sanitized.py
-```
+🚀 PyFU Ultimate processing 12 files in /projects/backend
 
-This makes pyfu safe to run on any codebase.
+⚡ Pipeline Execution
+⠋ Running God-Tier Pipeline... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50%
 
----
-
-## ⚙️ CLI arguments
-
-Custom output suffix
-
-```bash
-pyfu . --output-suffix fixed_
-```
-
-Disable suffixed output and modify files in place
-
-```bash
-pyfu . --no-suffix
+📝 Execution Log
+───────────────────────────────────────────────────────────────────
+✅ Ruff (Deep Refactor): 0.42s
+✅ Black (Formatter): 0.15s
+⚠️ Mypy (Type Enforcer): 1.20s
+   Error: argument "x" has incompatible type "int"; expected "str"
+🧠 Running AST Intelligence Engine...
+  ⚠️ Mutable default argument detected in 'user_list' in main.py:45
+  🧪 Created tests for utils.py
 ```
 
 ---
 
-## 🚫 Excluding files
+## ⚙️ Configuration
 
-You can exclude specific Python files by creating an `exclude.txt` file at the project root.
+PyFU is opinionated by default, but you can tweak the internal `DEFAULT_CONFIG` dictionary in `pyfu.py`:
 
-One file per line, relative paths:
-
-```text
-tests/main.py
-legacy/old_code.py
+```python
+DEFAULT_CONFIG = {
+    "line_length": 100,            # Black/Ruff line length
+    "target_version": "py310",     # Target Python version
+    "complexity_threshold": 10,    # Max Cyclomatic Complexity allowed
+    "security_strictness": "medium"
+}
 ```
 
-Excluded files are ignored even if pyfu is run on the entire directory.
-
 ---
 
-## 🧩 What pyfu checks and fixes
+## 🏗️ Architecture
 
-* Unused and unsafe imports
-* Broken or misleading code patterns
-* Formatting inconsistencies
-* Obvious logic mistakes
-* Type safety issues
-* General project hygiene problems
+PyFU operates in three phases:
 
-More checks will be added aggressively.
-
----
-
-## 🧠 Tooling pipeline
-
-pyfu always runs all tools in order:
-
-1. Ruff (auto-fix where possible)
-2. Black (formatting)
-3. Mypy (type checking)
-
-Even if one tool reports issues, the pipeline continues.
-
----
-
-## ⚙️ Project philosophy
-
-* Fast tools over fancy abstractions
-* Automation over documentation walls
-* Fix first, debate later
-* Safe defaults > endless configuration
-
-If the tool disagrees with you, it’s probably right.
-
----
-
-## 🧠 Project status
-
-* Early stage
-* Actively evolving
-* Breaking changes may happen
-* Feedback is welcome
+1.  **Phase 1: Structure & Security** (`Ruff` + `Bandit`)
+    *   Fixes syntax, imports, and style violations.
+    *   Scans for vulnerabilities.
+2.  **Phase 2: Consistency** (`Black` + `Mypy`)
+    *   Formats code to a canonical style.
+    *   Checks type consistency.
+3.  **Phase 3: Intelligence** (`ASTBrain`)
+    *   Parses the resulting clean code.
+    *   Analyzes algorithmic complexity.
+    *   Generates missing assets (tests/docs).
 
 ---
 
 ## 🤝 Contributing
 
-PRs are welcome.
-Bug reports are appreciated.
-Style debates are ignored.
+PyFU Ultimate is open for business. We welcome PRs that add new "God-Tier" capabilities:
+*   AI-based docstring generation (LLM integration).
+*   Automatic dependency version pinning.
+*   Docker containerization support.
 
 ---
 
-## 📜 License
+## 📄 License
 
-MIT
-
----
-
-Clean code. Fewer regrets. 🚀
-
-![GitHub Stats](https://github-readme-stats-fast.vercel.app/api/pin/?username=pro-grammer-SD\&repo=pyfu\&theme=nord)
+Distributed under the MIT License. See `LICENSE` for more information.
