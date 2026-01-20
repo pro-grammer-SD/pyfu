@@ -1,0 +1,11 @@
+typer
+rich
+watchdog
+black
+isort
+autopep8
+ruff
+pyupgrade
+bandit
+pylint
+pytest
