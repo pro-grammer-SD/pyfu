@@ -60,7 +60,7 @@ chmod +x pyfu.py
 Fixes Python files recursively. Silent unless it actually modifies code.
 
 ```bash
-python pyfu.py .
+python pyfu.py main .
 ```
 
 ---
@@ -70,7 +70,7 @@ python pyfu.py .
 Continuously watches files and repairs on save. Loop-safe by design.
 
 ```bash
-python pyfu.py . --watch
+python pyfu.py main . --watch
 ```
 
 ---
@@ -80,7 +80,7 @@ python pyfu.py . --watch
 Fixes code **and** generates `test_<module>.py` for public functions.
 
 ```bash
-python pyfu.py src/ --generate-tests
+python pyfu.py main src/ --generate-tests
 ```
 
 ---
@@ -88,7 +88,7 @@ python pyfu.py src/ --generate-tests
 ### 4. Single File Surgery
 
 ```bash
-python pyfu.py broken_script.py
+python pyfu.py main broken_script.py
 ```
 
 ---

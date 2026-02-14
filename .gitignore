@@ -1,3 +1,33 @@
-.ruff_cache/
-tests/
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyFu state & caches
 .pyfu_state.json
+.ruff_cache/
+
+# Virtual environments
+.venv/
+env/
+ENV/
+venv.bak/
+
+# Test directories (auto-generated)
+tests/
+
+# OS & system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
